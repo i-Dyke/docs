@@ -1,5 +1,6 @@
 { 
-  "ksim": "K-Scale Humanoid Simulator",
+  "sim": "K-Scale Humanoid Simulator",
+  "ksim": "K-Scale Humanoid Simulator (MJX)",
   "minppo": "Minimal PPO Implementation",
   "stompylive": "Stompy in MuJoCo Web Assembly"
 }
