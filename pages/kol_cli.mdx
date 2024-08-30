@@ -1,0 +1,103 @@
+# The `kol` (K-Scale OnShape Library) CLI
+
+`kol` is what we use at K-Scale for interacting with OnShape. It is a wrapper around the OnShape API that allows us to easily import parts, postprocess them, and export them in a variety of formats. This is a key part of our mission to make robots more accessible --- Onshape is free, easy to use, and encourages open-source development through FeatureScript.
+
+In a single CLI, we support functions such as mesh simplification, mesh merging, joint cleanup, transferring between MJCF/URDF formats, and more.
+
+## Installation
+
+```bash
+pip install kol
+```
+
+## Usage
+
+The KOL CLI provides several subcommands for different operations:
+
+```bash
+kol <subcommand> [options]
+```
+
+Available subcommands:
+- `run`: Download from Onshape and post-process
+- `download`: Only download from Onshape
+- `postprocess`: Post-process an existing URDF
+- `pybullet`: Run PyBullet simulation
+
+### Download and Post-process
+
+To download a model from Onshape and apply post-processing:
+
+```bash
+kol run --document-url <onshape-document-url> --output-dir <output-directory>
+```
+
+Options:
+- `--document-url`: URL of the Onshape document (required)
+- `--output-dir`: Directory to save output files (required)
+- `--debug`: Enable debug logging
+- [Add other relevant options from ConverterConfig]
+
+### Download Only
+
+To only download a model from Onshape without post-processing:
+
+```bash
+kol download <document_url> --output-dir <output_directory> [options]
+```
+
+Options are similar to the `run` subcommand.
+
+### Post-process Existing URDF
+
+To apply post-processing to an existing URDF file:
+
+```bash
+kol postprocess <urdf-path> [options]
+```
+
+Options:
+- `--urdf-path`: Path to the URDF file to process (required)
+- `--merge-fixed-joints`: Merge fixed joints (default: True)
+- `--simplify-meshes`: Simplify meshes (default: True)
+- `--voxel-size`: Voxel size for mesh simplification (default: 0.01)
+- `--convex-collision-meshes`: Generate convex collision meshes (default: True)
+- `--add-mjcf`: Add MJCF (MuJoCo XML) files (default: True)
+
+### PyBullet Simulation
+
+To run a PyBullet simulation with the processed URDF:
+
+```bash
+kol pybullet <urdf_path> [options]
+```
+
+Options:
+- `<urdf_path>`: Path to the URDF file to simulate (required)
+- `--dt FLOAT`: Time step for simulation (default: 0.01)
+- `-n`, `--hide-gui`: Hide the PyBullet GUI
+- `--no-merge`: Do not merge fixed links
+- `--hide-origin`: Do not show the origin of the robot
+- `--show-inertia`: Visualize the inertia frames
+- `--see-thru`: Use see-through mode for robot visualization
+- `--show-collision`: Show collision meshes
+
+## Examples
+
+1. Download and post-process an Onshape model:
+
+```bash
+kol run https://cad.onshape.com/documents/... --output-dir ./output
+```
+
+2. Post-process an existing URDF:
+
+```bash
+kol postprocess ./path/to/model.urdf --voxel-size 0.005
+```
+
+3. Run PyBullet simulation:
+
+```bash
+kol pybullet ./output/model.urdf
+```

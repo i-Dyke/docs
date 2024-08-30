@@ -1,15 +1,34 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+
+  "separator1": {
+    "type": "separator"
+  },
+
+  "kscale_cli": "K-Scale CLI",
+  "kol_cli": "K-Scale Onshape Library CLI",
+
+  "separator2": {
+    "type": "separator"
+  },
+
+  "stompy_mini": "Stompy Mini Build Guide",
+
+
+  "simulation": "Simulation",
+  "operating_systems": "Operating Systems",
+  "grants": "Grants",
+
   "about": {
     "title": "About",
-    "type": "page"
+    "type": "page",
+    "href": "https://kscale.dev/",
+    "newWindow": true
   },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://x.com/kscalelabs",
     "newWindow": true
   }
 }
