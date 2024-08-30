@@ -30,7 +30,7 @@ const config: DocsThemeConfig = {
       <>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:url" content={url} />
-        <meta property="og:title" content={frontMatter.title?.replace('Nextra', '') || 'K-Scale Labs Docs'} />
+        <meta property="og:title" content={frontMatter.title?.replace(/ ?[-–—] ?Nextra/g, '') || 'K-Scale Labs Docs'} />
         <meta property="og:description" content={frontMatter.description || 'K-Scale open source humanoid building guide'} />
       </>
     );
