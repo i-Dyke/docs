@@ -16,9 +16,6 @@ const config: DocsThemeConfig = {
     link: "https://discord.gg/kscale",
   },
   docsRepositoryBase: "https://github.com/kscalelabs/docs",
-  footer: {
-    text: "K-Scale Labs Documentation",
-  },
   useNextSeoProps() {
     return {
       titleTemplate: '%s – K-Scale Labs'
@@ -48,6 +45,45 @@ const config: DocsThemeConfig = {
       }
       return <>{title}</>
     }
+  },
+  footer: {
+    text: (
+      <div style={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '10px',
+            fontSize: '0.9em',
+          }}>
+            <a href="https://forms.gle/xkba4WWGD5Pmayj96" target="_blank" rel="noopener noreferrer">Join Newsletter</a>
+            <span>|</span>
+            <a href="https://grant.kscale.dev/" target="_blank" rel="noopener noreferrer">Grant Program</a>
+            <span>|</span>
+            <a href="https://kscale.store/" target="_blank" rel="noopener noreferrer">K-Scale Store</a>
+            <span>|</span>
+            <a href="https://twitter.com/kscalelabs" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <span>|</span>
+            <a href="https://github.com/kscalelabs" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <div style={{ marginTop: '10px', fontSize: '0.9em' }}>
+            MIT {new Date().getFullYear()} © K-Scale Labs
+          </div>
+        </div>
+      </div>
+    )
   }
 };
 
