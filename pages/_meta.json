@@ -1,13 +1,23 @@
 {
   "index": "Introduction",
 
+  "separator1": {
+    "type": "separator"
+  },
+
   "build_guide": "Stompy Mini Build Guide",
   "control": "Control",
   "simulation": "Simulation",
   "cli": "CLI",
   "operating_systems": "Operating Systems",
+
+  "separator2": {
+    "type": "separator"
+  },
+
   "hackathon": "Robotics Hackathon",
   "grants": "Humanoid Grants",
+  "contribute": "Contribute",
 
   "about": {
     "title": "About",
@@ -21,4 +31,7 @@
     "href": "https://x.com/kscalelabs",
     "newWindow": true
   }
+
+
+
 }
