@@ -1,4 +1,4 @@
 { 
-  "minppo": "MinPPO",
-  "stompylive": "Stompy Live"
+  "minppo": "Minimal PPO Implementation",
+  "stompylive": "Stompy in MuJoCo Web Assembly"
 }

@@ -1,23 +1,17 @@
 {
   "index": "Introduction",
+  "hackathon": "Hackathon",
+  "grants": "Grants",
 
   "separator1": {
     "type": "separator"
   },
 
-  "kscale_cli": "K-Scale CLI",
-  "kol_cli": "K-Scale Onshape Library CLI",
-
-  "separator2": {
-    "type": "separator"
-  },
-
-  "stompy_mini": "Stompy Mini Build Guide",
-
-
+  "cli": "CLI",
+  "build_guide": "Stompy Mini Build Guide",
+  "control": "Control",
   "simulation": "Simulation",
   "operating_systems": "Operating Systems",
-  "grants": "Grants",
 
   "about": {
     "title": "About",
