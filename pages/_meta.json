@@ -7,10 +7,6 @@
   "cli": "CLI",
   "operating_systems": "Operating Systems",
 
-  "separator2": {
-    "type": "separator"
-  },
-
   "hackathon": "Robotics Hackathon",
   "grants": "Humanoid Grants",
   "contribute": "Contribute",
