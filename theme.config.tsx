@@ -10,7 +10,7 @@ const WorkInProgress = () => (
 const config: DocsThemeConfig = {
   logo: <span>K-Scale Labs</span>,
   project: {
-    link: "https://github.com/kscalelabs/",
+    link: "https://github.com/kscalelabs/docs",
   },
   chat: {
     link: "https://discord.gg/kscale",
