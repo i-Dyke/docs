@@ -19,6 +19,11 @@ const config: DocsThemeConfig = {
   footer: {
     text: "K-Scale Labs Documentation",
   },
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s - K-Scale Labs'
+    }
+  },
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();
     const { frontMatter } = useConfig();
