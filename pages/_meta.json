@@ -6,8 +6,14 @@
   "simulation": "Simulation",
   "cli": "CLI",
   "operating_systems": "Operating Systems",
+
+  "separator2": {
+    "type": "separator"
+  },
+
   "hackathon": "Robotics Hackathon",
   "grants": "Humanoid Grants",
+  "contribute": "Contribute",
 
   "about": {
     "title": "About",
@@ -21,4 +27,7 @@
     "href": "https://x.com/kscalelabs",
     "newWindow": true
   }
+
+
+
 }
