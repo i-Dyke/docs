@@ -5,7 +5,8 @@
   "simulation": "Simulation",
   "cli": "CLI",
   "operating_systems": "Operating Systems",
-
+  "community": "Community",
+  
   "about": {
     "title": "About",
     "type": "page",
