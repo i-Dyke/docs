@@ -2,7 +2,7 @@ import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>K-Scale Labs</span>,
+  logo: <span>K-Scale Labs Docs</span>,
   project: {
     link: "https://github.com/kscalelabs/docs",
   },
