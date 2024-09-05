@@ -4,9 +4,10 @@
   "control": "Control",
   "simulation": "Simulation",
   "cli": "CLI",
-  "operating_systems": "Operating Systems",
-  "community": "Community",
-  
+  "operating_systems": "Operating System",
+  "community": "Community", 
+
+
   "about": {
     "title": "About",
     "type": "page",

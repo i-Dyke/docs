@@ -1,4 +1,9 @@
-{ 
+{
+  "firmware": {
+    "title": "Firmware",
+    "href": "https://firmware.kscale.dev",
+    "newWindow": true
+  }, 
   "sim2real": "Sim2Real",
   "teleoperation": "Teleoperation",
   "drivers": "Drivers"
