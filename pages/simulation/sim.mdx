@@ -52,11 +52,11 @@ make install-third-party-external
 export MODEL_DIR=sim/resources/stompymini
 ```
 
-2. Run training with the following command:
+2. Run a small training with visualization with the following command:
 ```bash
-python sim/train.py --task=stompymini --num_envs=4096 --headless
+python sim/train.py --task=stompymini --num_envs=4
 ```
-or for full body:
+or full training in the headless mode:
 ```bash
 python sim/train.py --task=stompymini --num_envs=4096 --headless
 ```
