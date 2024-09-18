@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { Card, Cards } from 'nextra/components'
+import { FaGithub, FaDiscord, FaTwitter } from 'react-icons/fa'
 
 <Image
   alt="K-Scale Open Source Robotics"
@@ -9,7 +11,7 @@ import Image from 'next/image'
   style={{ maxWidth: '100%', height: 'auto', marginTop: '2rem'  }}
 />
 
-Welcome to K-Scale Labs! We're developing a powerful and open-source humanoid platform for enthusiastic roboticists like ourselves. 
+Welcome to K-Scale Labs! We're developing a powerful and open-source humanoid platform for enthusiastic roboticists like ourselves.
 Our first two robots, Stompy and Stompy Mini are completely open source, and this documenation will provide a guide to build Stompy Mini yourself.
 The goal of this guide is to help you build Stompy Mini easily.
 
@@ -17,13 +19,23 @@ We'd love it if you'd join us on this journey!
 
 <br />
 
-
-<Image
-  alt="Robots"
-  src="/robots.jpeg"
-  width={1200}
-  height={630}
-  priority
-  style={{ maxWidth: '100%', height: 'auto' }}
-/>
-
+<Cards>
+  <Card
+    icon={<FaGithub />}
+    title="Github"
+    href="https://github.com/kscalelabs"
+    description="Contribute to our open-source projects"
+  />
+  <Card
+    icon={<FaDiscord />}
+    title="Discord"
+    href="https://discord.gg/kscale"
+    description="Chat with us and other contributors"
+  />
+  <Card
+    icon={<FaTwitter />}
+    title="Twitter"
+    href="https://x.com/kscalelabs"
+    description="Follow us on X for updates and announcements"
+  />
+</Cards>
