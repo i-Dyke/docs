@@ -1,11 +1,21 @@
-import { Callout } from 'nextra/components'
+import { Card, Cards } from 'nextra/components'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import Image from 'next/image'
 
-<Callout emoji="🤖">
-<a href="https://lu.ma/kscale-open-house-2" style={{ color: 'inherit', textDecoration: 'underline' }}>Register here</a>
-</Callout>
-
 # K-Hacks
+
+<Cards>
+  <Card
+    icon={<FaExternalLinkAlt />}
+    title="Register"
+    href="https://forms.gle/gTrkU5mbABVDT3DY8"
+  />
+  <Card
+    icon={<FaExternalLinkAlt />}
+    title="K-Hacks 0.1"
+    href="https://x.com/kscalelabs/status/1831050313056559431"
+  />
+</Cards>
 
 We are a humanoid company in Palo Alto, focused on creating powerful, useful, and open source humanoids. We love robots. Come build something cool and make tangible progress on your robotics project!
 
@@ -71,7 +81,3 @@ By attending this hackathon, you're agreeing to the following hackathon [Code of
 - [Paweł Budzianowski](http://budzianowski.github.io)
 - [Matt Freed](https://x.com/_mattfreed)
 - [Jingxiang Mo](https://jingxiangmo.com)
-
-## Past K-Hacks
-
-- [K-Hacks 0.1](https://x.com/kscalelabs/status/1831050313056559431)

@@ -9,7 +9,10 @@ This documentation is under construction and incomplete. We are in the process o
 
 # Cameras
 
-We are using the ArduCAM ([1](https://www.arducam.com/product/arducam-180-degree-fisheye-1-2-3-m12-mount-with-lens-adapter-for-raspberry-pi-high-quality-camera/)) ([2](https://www.arducam.com/product/arducam-pivariety-18mp-ar1820hs-color-camera-module-for-rpi-cam-b0367/))
+We are using the ArduCAM
+
+- [18MP Color Camera](https://www.arducam.com/product/arducam-pivariety-18mp-ar1820hs-color-camera-module-for-rpi-cam-b0367)
+- [Fisheye Lens](https://www.arducam.com/product/arducam-180-degree-fisheye-1-2-3-m12-mount-with-lens-adapter-for-raspberry-pi-high-quality-camera/)
 
 Here is an example of using OpenCV to capture a frame:
 
@@ -52,8 +55,8 @@ The driver source code for the ArduCAM lives [here](https://github.com/ArduCAM/M
 
 8. For color images, a Bayer filter mosaic is used, with alternating red, green, and blue filters over the pixels.
 
-9. Demosaicing algorithms interpolate the full color information for each pixel. 
-    (eg. a pixel in the sensor with a blue filter will have its red and green values extrapolated from the nearby pixels which have those filters). 
+9. Demosaicing algorithms interpolate the full color information for each pixel.
+    (eg. a pixel in the sensor with a blue filter will have its red and green values extrapolated from the nearby pixels which have those filters).
 
 10. Additional processing may include noise reduction, sharpening, and color correction.
 
