@@ -1,7 +1,45 @@
-import { Callout } from 'nextra/components'
+import { Callout } from "nextra/components";
 
 # Speaker
 
 <Callout type="warning" emoji="⚠️">
-This documentation is under construction and incomplete. We are in the process of choosing a speaker that works well with our robots.
+  This documentation is under construction and incomplete. We are in the process
+  of choosing a speaker that works well with our robots.
 </Callout>
+
+### Speakers
+
+We are using the 4 ohm 4 watt speaker from Digikey ([1](https://www.digikey.com/short/5t82t2h9))
+It can be wired up to the Jetson Orin as such:
+
+Here is an example of code to play a wav file on the speaker:
+
+```python
+import numpy as np
+import sounddevice as sd
+import soundfile as sf
+
+
+sound, sr = sf.read("test.wav") #sr is the sampling rate. sound is a numpy array.
+device = 35 #You can query the device ID using: sd.query_devices()
+
+sd.default.device = device
+sd.play(audio, sr, blocking=True)
+```
+
+### From Bits to Sound
+
+This is the path sound takes on the linux system.
+
+1. **Sound Server**: Most basically, orchestrates device driver to work with mulitplexing. Examples include PulseAudio, Pipewire, JACK.
+2. **Driver**: The Advanced LInux Sound Architecture (ALSA) drives the digital to analog conversion and writes the bytes to the output.
+3. Digital to Analog Converter (DAC) or digital amplifier with similar functionality built in feeds analog signal to the speaker. Controlled by the driver. May have additional hardware here such as amps and pre-amps.
+4. Speaker converts electrical signal to sound.
+
+Our implementation uses soundfile and sounddevice, which are libraries built to manipulate audio files. Their functionalities for manipulating the driver 
+and getting processed data from that is through PortAudio, an abstraction layer atop of ALSA.
+
+### Key Words
+
+- **Sampling Rate** = how many times per second information is captured. 44.1 khz is common for audio, 48 khz for video, and higher specification audio have higher sampling rates such as 96 khz.
+- **Multiplexing** = the process of interleaving multiple signals (eg. Spotify and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.

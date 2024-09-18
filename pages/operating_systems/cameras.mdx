@@ -9,7 +9,7 @@ This documentation is under construction and incomplete. We are in the process o
 
 # Cameras
 
-We are using the ArduCAM.
+We are using the ArduCAM ([1](https://www.arducam.com/product/arducam-180-degree-fisheye-1-2-3-m12-mount-with-lens-adapter-for-raspberry-pi-high-quality-camera/)) ([2](https://www.arducam.com/product/arducam-pivariety-18mp-ar1820hs-color-camera-module-for-rpi-cam-b0367/))
 
 Here is an example of using OpenCV to capture a frame:
 
@@ -40,21 +40,24 @@ The driver source code for the ArduCAM lives [here](https://github.com/ArduCAM/M
 
 2. Photons hit the image sensor, typically a CCD (Charge-Coupled Device) or CMOS (Complementary Metal-Oxide-Semiconductor) sensor.
 
-3. Each sensor pixel contains a photodiode that converts photons into electrical charges.
+3. Each pixel in the sensor has a filter on it, Red Green or Blue. Comparing their intensity gives us colored images. (also see step 9)
 
-4. The accumulated charge is proportional to the light intensity.
+4. Each sensor pixel contains a photodiode that converts photons into electrical charges.
 
-5. An ADC (Analog-to-Digital Converter) converts the analog signal to digital values.
+5. The accumulated charge is proportional to the light intensity.
 
-6. These digital values represent the brightness and color information for each pixel.
+6. An ADC (Analog-to-Digital Converter) converts the analog signal to digital values.
 
-7. For color images, a Bayer filter mosaic is used, with alternating red, green, and blue filters over the pixels.
+7. These digital values represent the brightness and color information for each pixel.
 
-8. Demosaicing algorithms interpolate the full color information for each pixel.
+8. For color images, a Bayer filter mosaic is used, with alternating red, green, and blue filters over the pixels.
 
-9. Additional processing may include noise reduction, sharpening, and color correction.
+9. Demosaicing algorithms interpolate the full color information for each pixel. 
+    (eg. a pixel in the sensor with a blue filter will have its red and green values extrapolated from the nearby pixels which have those filters). 
 
-10. The resulting digital image is now ready for display or further processing by neural networks or other algorithms.
+10. Additional processing may include noise reduction, sharpening, and color correction.
+
+11. The resulting digital image is now ready for display or further processing by neural networks or other algorithms.
 
 ### Bayer Filter Mosaic
 
@@ -70,6 +73,11 @@ The Bayer filter mosaic is a color filter array (CFA) used in most digital camer
 - Each pixel only captures one color of light (red, green, or blue).
 
 This arrangement allows a single sensor to capture color information, but requires interpolation (demosaicing) to reconstruct a full-color image.
+
+
+### Encoding
+
+
 
 ### Advanced Processing: HDR and Color Spaces
 
@@ -97,3 +105,4 @@ After demosaicing, the image data is typically in the camera's native RGB color 
   - U and V: Chrominance (color) components
 - **sRGB**: Standard RGB color space for most consumer devices and the web.
 - **Color Gamut**: The range of colors a device can capture or display.
+- **Bitmap**: a grid of pixels, as opposed to vector image.
