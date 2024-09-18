@@ -1,7 +1,53 @@
-import { Callout } from 'nextra/components'
+import { Callout } from "nextra/components";
+import Image from 'next/image'
+import speaker_and_mic_wiring from './speaker_and_mic_wiring.png'
 
 # Microphone
 
 <Callout type="warning" emoji="⚠️">
-This documentation is under construction and incomplete. We are in the process of choosing a microphone that works well with our robots.
+  This documentation is under construction and incomplete. We are in the process
+  of choosing a microphone that works well with our robots.
 </Callout>
+
+
+At the moment, we are using the this microphone from ReSpeaker ([1](https://www.seeedstudio.com/ReSpeaker-Mic-Array-v2-0.html))
+It can be wired up to the Jetson Orin as such:
+
+<Image src={speaker_and_mic_wiring} alt="Speaker and Mic Wiring" width={250} height={156} />
+
+Here is an example of code to play a wav file on the speaker:
+
+```python
+import numpy as np
+import sounddevice as sd
+import soundfile as sf
+
+dur_in_sec = 10.0
+fs = 44100
+sd.default.device = 35 #You can query the device ID using: sd.query_devices(). It should be selected to ALSA default.
+
+print("Listening...")
+audio_data = sd.rec(int(dur_in_sec * fs), samplerate=fs, channels=4, blocking=True)
+sf.write("../play_audio/recorded_audio.wav", audio_data, 44100)
+
+```
+
+### From Bits to Sound
+
+This is the path sound takes on the linux system. It is similar to the speaker (but reversed).
+
+1. **Microphone**: Captures sound and converts it to an electrical signal.
+2. Sound Card acts as the Digital to Analog Converter (**DAC**)
+3. **Driver**: The Advanced LInux Sound Architecture (ALSA) drives the digital 
+to analog conversion and writes the bytes to the output.
+4. **Sound Server**: Most basically, orchestrates device driver to work with 
+
+Our implementation uses `soundfile` and `sounddevice`, which are libraries built to 
+manipulate audio files. Their functionalities for interacting with the sound card and 
+getting processed data from that is through PortAudio, an abstraction layer atop of ALSA.
+
+### With Digital MEMS Microphones
+The ReSpeaker Microphone is a MEMS microphone. The mic sensor onboard is the MP34DT01 
+which outputs PDM (Pulse-Density Modulation) data. This is already digital data as opposed 
+to analog.
+

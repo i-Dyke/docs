@@ -1,4 +1,6 @@
 import { Callout } from "nextra/components";
+import Image from 'next/image'
+import speaker_and_mic_wiring from './speaker_and_mic_wiring.png'
 
 # Speaker
 
@@ -7,10 +9,11 @@ import { Callout } from "nextra/components";
   of choosing a speaker that works well with our robots.
 </Callout>
 
-### Speakers
 
-We are using the 4 ohm 4 watt speaker from Digikey ([1](https://www.digikey.com/short/5t82t2h9))
+At the moment, we are using the this speaker from Digikey ([1](https://www.digikey.com/short/5t82t2h9))
 It can be wired up to the Jetson Orin as such:
+
+<Image src={speaker_and_mic_wiring} alt="Speaker and Mic Wiring" width={250} height={156} />
 
 Here is an example of code to play a wav file on the speaker:
 
@@ -31,15 +34,21 @@ sd.play(audio, sr, blocking=True)
 
 This is the path sound takes on the linux system.
 
-1. **Sound Server**: Most basically, orchestrates device driver to work with mulitplexing. Examples include PulseAudio, Pipewire, JACK.
-2. **Driver**: The Advanced LInux Sound Architecture (ALSA) drives the digital to analog conversion and writes the bytes to the output.
-3. Digital to Analog Converter (DAC) or digital amplifier with similar functionality built in feeds analog signal to the speaker. Controlled by the driver. May have additional hardware here such as amps and pre-amps.
+1. **Sound Server**: Most basically, orchestrates device driver to work with 
+mulitplexing. Examples include PulseAudio, Pipewire, JACK.
+2. **Driver**: The Advanced LInux Sound Architecture (ALSA) drives the digital 
+to analog conversion and writes the bytes to the output.
+3. Sound Card acts as the Digital to Analog Converter (**DAC**)
+Controlled by the driver. May have additional hardware here such as amps and pre-amps.
 4. Speaker converts electrical signal to sound.
 
-Our implementation uses soundfile and sounddevice, which are libraries built to manipulate audio files. Their functionalities for manipulating the driver 
-and getting processed data from that is through PortAudio, an abstraction layer atop of ALSA.
+Our implementation uses `soundfile` and `sounddevice`, which are libraries built to 
+manipulate audio files. Their functionalities for interacting with the sound card and 
+getting processed data from that is through PortAudio, an abstraction layer atop of ALSA.
 
-### Key Words
+### Other Terms
 
-- **Sampling Rate** = how many times per second information is captured. 44.1 khz is common for audio, 48 khz for video, and higher specification audio have higher sampling rates such as 96 khz.
-- **Multiplexing** = the process of interleaving multiple signals (eg. Spotify and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.
+- **Sampling Rate** = how many times per second information is captured. 44.1 khz 
+is common for audio, 48 khz for video, and higher specification audio have higher sampling rates such as 96 khz.
+- **Multiplexing** = the process of interleaving multiple signals (eg. Spotify 
+and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.
