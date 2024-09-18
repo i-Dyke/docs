@@ -4,17 +4,17 @@ import { Callout } from 'nextra/components'
 This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
 </Callout>
 
-# The `kscale` CLI
+## The `kscale` CLI
 
 The `kscale` CLI is what we use to interact with the [K-Scale store](https://kscale.store/). This will allow for users to download and upload URDF files completely through our CLI or through our website, with support for auto-fetching the latest version of URDF and mesh files from continually updating Onshape documents.
 
-## Installation
+### Installation
 
 ```bash
 pip install kscale
 ```
 
-## Usage
+### Usage
 
 ```bash
 kscale <subcommand> [options]
@@ -22,9 +22,9 @@ kscale <subcommand> [options]
 
 Where `<subcommand>` is either `urdf` or `pybullet`.
 
-## Subcommands
+### Subcommands
 
-### 1. URDF
+#### URDF
 
 The `urdf` subcommand allows you to manage URDF (Unified Robot Description Format) files in the K-Scale store.
 
@@ -40,7 +40,7 @@ Available commands:
 - `info`: Display information about a URDF artifact.
 - `remove-local`: Remove locally cached URDF files.
 
-#### Examples:
+##### Examples
 
 1. Download a URDF:
    ```bash
@@ -58,7 +58,7 @@ Available commands:
    kscale urdf remove-local all
    ```
 
-### 2. PyBullet
+#### PyBullet
 
 The `pybullet` subcommand allows interaction with PyBullet functionalities. The specific commands and options for this subcommand are not provided in the given code snippet.
 
@@ -74,7 +74,7 @@ For detailed information on the available commands and options for the `pybullet
 kscale pybullet --help
 ```
 
-## Notes
+### Notes
 
 - The CLI uses asynchronous operations for improved performance.
 - An API key is required for certain operations. Set it as the `KSCALE_API_KEY` environment variable or in your config file.

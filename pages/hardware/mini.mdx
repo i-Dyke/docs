@@ -1,24 +1,28 @@
 import Image from 'next/image'
-
 import { Callout } from 'nextra/components'
+import arm from './mini/arm.png'
+import leg from './mini/leg.png'
+import torso from './mini/torso.png'
+import head from './mini/head.png'
+
+<Callout type="warning" emoji="⚠️">
+This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
+</Callout>
+
+# Stompy Mini Build Guide
+
+## Head
 
 <Image
   alt="robot part"
-  src="/head.png"
+  src={head}
   width={1200}
   height={630}
   priority
   style={{ maxWidth: '100%', height: 'auto' }}
 />
 
-
-# Build Stompy Mini Head
-
-<Callout type="warning" emoji="⚠️">
-This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
-</Callout>
-
-# Bill of Materials (BOM)
+### Bill of Materials (BOM)
 
 | Category | Component Name | Product Name | Manufacturer | Part Number | Quantity | Unit Price | Link to Purchase | Notes |
 |----------|----------------|--------------|--------------|-------------|----------|------------|------------------|-------|
@@ -28,5 +32,35 @@ This documentation is under construction and incomplete. Please [sign up here fo
 | Power Supply (temp) | Lithium Battery | 18650 Battery | Panasonic | NCR18650B | 2 | $7.99 | [Battery Junction](https://www.batteryjunction.com/panasonic-ncr18650b.html) | 3400mAh rechargeable battery |
 | Mechanical (temp) | Chassis | Robot Base Plate | K-Scale | 3244 | 1 | $12.50 | [Adafruit](https://www.adafruit.com/product/3244) | Aluminum chassis for robot assembly |
 
+## Arm
 
+<Image
+  alt="robot part"
+  src={arm}
+  width={1200}
+  height={630}
+  priority
+  style={{ maxWidth: '100%', height: 'auto' }}
+/>
 
+## Leg
+
+<Image
+  alt="robot part"
+  src={leg}
+  width={1200}
+  height={630}
+  priority
+  style={{ maxWidth: '100%', height: 'auto' }}
+/>
+
+## Torso
+
+<Image
+  alt="robot part"
+  src={torso}
+  width={1200}
+  height={630}
+  priority
+  style={{ maxWidth: '100%', height: 'auto' }}
+/>

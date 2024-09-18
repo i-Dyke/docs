@@ -1,0 +1,12 @@
+{
+  "motor_control": "Motor Control",
+  "cameras": "Cameras",
+  "speaker": "Speaker",
+  "imu": "IMU",
+  "microphone": "Microphone",
+  "firmware": {
+    "title": "Firmware ↗",
+    "href": "https://firmware.kscale.dev",
+    "newWindow": true
+  }
+}

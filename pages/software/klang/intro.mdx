@@ -1,14 +1,28 @@
 import { Callout } from 'nextra/components'
+import Image from 'next/image'
+import arch from "./pics/arch.svg"
 
 <Callout type="warning" emoji="⚠️">
 This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
 </Callout>
 
+[GitHub](https://github.com/kscalelabs/klang)
 
-# K-Lang
-
-[Our GitHub](https://github.com/kscalelabs/klang)
+## Introduction
 
 Klang is a domain-specific language (DSL) for programming robots. Here, we are working on our parser with Rust. From this, we will hopefully allow users to be able to write Klang code that can be compiled into motor control commands for our robots.
 
-Think Midjourney --- we want users to be able to apply various tags for our model to understand implicitly and generate motor control commands.
+Think Midjourney - we want users to be able to apply various tags for our model to understand implicitly and generate motor control commands.
+
+### Architecture
+
+Below is a diagram showing the architecture of the Klang neural interpreter.
+
+<Image
+  alt="robot part"
+  src={arch}
+  width={1200}
+  height={630}
+  priority
+  style={{ maxWidth: '100%', height: 'auto' }}
+/>

@@ -1,5 +1,4 @@
 import { Callout } from 'nextra/components'
-import { Bleed } from 'nextra-theme-docs'
 
 <Callout type="warning" emoji="⚠️">
 This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
@@ -7,20 +6,14 @@ This documentation is under construction and incomplete. Please [sign up here fo
 
 # Teleoperation
 
-
-
-<Bleed>
-  <iframe
-    src="https://www.youtube.com/embed/tIkKE_aTgEk"
-    width="100%"
-    height="500px"
-    title="Stompy Mini Teleop Demo"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  />
-</Bleed>
-
+<iframe
+  src="https://www.youtube.com/embed/tIkKE_aTgEk"
+  title="Stompy Mini Teleop Demo"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  style={{ width: '100%', height: 'auto', aspectRatio: '16/9', marginTop: '2rem' }}
+/>
 
 A minimal implementation of a bi-manual remote robotic teleoperation system using VR hand tracking and camera streaming.
 
@@ -72,7 +65,7 @@ python replay.py --dataset_dir PATH/TO/DATASET --episode_idx EPISODE_IDX
 
 ### Common Issues
 #### Large Errors in Robot State and Actions
-Check the units, offsets, and any other factors that might be causing the numbers being recorded to be different than you expect. Also, check that the motor configs are correct (signs, offsets, etc). The Robot class has a handy method to test motors. 
+Check the units, offsets, and any other factors that might be causing the numbers being recorded to be different than you expect. Also, check that the motor configs are correct (signs, offsets, etc). The Robot class has a handy method to test motors.
 
 ```python
 robot.test_motors()
@@ -86,7 +79,7 @@ Check that the robot is connected to the firmware and that the firmware is runni
   ```
 
 #### Jerky Robot Movement
-Depending on your setup (power supply, battery, etc), check that current draw is not too high. An abnormally high current draw is also indicative of large errors in motor state and actions since we are using a closed loop PD torque controller. 
+Depending on your setup (power supply, battery, etc), check that current draw is not too high. An abnormally high current draw is also indicative of large errors in motor state and actions since we are using a closed loop PD torque controller.
 
 ### Dependencies
 

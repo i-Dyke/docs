@@ -1,7 +1,11 @@
-import React from "react";
-import { DocsThemeConfig } from "nextra-theme-docs";
-import { useRouter } from 'next/router';
-import { useConfig } from 'nextra-theme-docs';
+import { useRouter } from "next/router";
+import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
+
+const siteHost = "docs.kscale.dev";
+const siteUrl = `https://${siteHost}`;
+const siteSocialUrl = `${siteUrl}/social.png`;
+const siteDesc = `An open source community building a useful humanoid robot.`;
+const siteTitle = "K-Scale Labs Docs";
 
 const config: DocsThemeConfig = {
   logo: <span>K-Scale Labs Docs</span>,
@@ -12,34 +16,94 @@ const config: DocsThemeConfig = {
     link: "https://discord.gg/kscale",
   },
   docsRepositoryBase: "https://github.com/kscalelabs/docs/tree/master/",
-  sidebar: {
-    autoCollapse: true,
-    defaultMenuCollapseLevel: 1, 
-  },
-  footer: {
-    text: "K-Scale Labs Documentation",
+  editLink: {
+    text: "Edit this page on GitHub",
   },
   useNextSeoProps() {
-    return {
-      titleTemplate: '%s - K-Scale Labs'
+    const { asPath } = useRouter();
+    if (asPath === "/") {
+      return {
+        titleTemplate: siteTitle,
+      };
+    } else {
+      return {
+        titleTemplate: `%s – ${siteTitle}`,
+      };
     }
   },
-  head: () => {
-    const { asPath, defaultLocale, locale } = useRouter();
-    const { frontMatter } = useConfig();
-    const url =
-      'https://docs.kscale.dev' +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+  sidebar: {
+    titleComponent,
+    toggleButton: true,
+    defaultMenuCollapseLevel: 2,
+  },
+  head: function useHead() {
+    const config = useConfig();
+    const { asPath } = useRouter();
+    const isIndex = asPath === "/";
+    const title =
+      config?.title && !isIndex ? `${config.title} - ${siteTitle}` : siteTitle;
 
     return (
       <>
+        <meta httpEquiv="Content-Language" content="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={frontMatter.title?.replace(/ ?[-–—] ?Nextra/g, '') || 'K-Scale Labs Docs'} />
-        <meta property="og:description" content={frontMatter.description || 'K-Scale open source humanoid building guide'} />
+        <meta name="robots" content="index,follow" />
+
+        <meta name="description" content={siteDesc} />
+        <meta property="og:description" content={siteDesc} />
+        <meta name="twitter:description" content={siteDesc} />
+
+        <meta property="og:site_name" content={siteTitle} />
+        <meta name="apple-mobile-web-app-title" content={siteTitle} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={siteSocialUrl} />
+        <meta name="og:image" content={siteSocialUrl} />
+
+        <meta property="twitter:domain" content={siteHost} />
+        <meta name="twitter:site:domain" content={siteHost} />
+
+        <meta name="twitter:url" content={siteUrl} />
+
+        <meta property="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
+        <title>{title}</title>
+
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32.png"
+        />
+
+        <style>
+          {`
+          ul.nx-mt-6 {
+            margin-top: 0;
+          }
+          `}
+        </style>
       </>
     );
-  }
+  },
+  footer: {
+    component: null,
+  },
 };
+
+function titleComponent({
+  title,
+}: {
+  title: string;
+  type: string;
+  route: string;
+}) {
+  if (title === "Software" || title === "Hardware" || title === "Community") {
+    return <b>{title}</b>;
+  }
+
+  return <span>{title}</span>;
+}
 
 export default config;

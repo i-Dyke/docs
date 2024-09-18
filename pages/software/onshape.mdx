@@ -4,20 +4,19 @@ import { Callout } from 'nextra/components'
 This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
 </Callout>
 
-
-# The `kol` (K-Scale OnShape Library) CLI
+## Onshape to URDF Converter
 
 `kol` is what we use at K-Scale for interacting with OnShape. It is a wrapper around the OnShape API that allows us to easily import parts, postprocess them, and export them in a variety of formats. This is a key part of our mission to make robots more accessible --- Onshape is free, easy to use, and encourages open-source development through FeatureScript.
 
 In a single CLI, we support functions such as mesh simplification, mesh merging, joint cleanup, transferring between MJCF/URDF formats, and more.
 
-## Installation
+### Installation
 
 ```bash
 pip install 'kscale-onshape-library[all]'
 ```
 
-## Usage
+### Usage
 
 The KOL CLI provides several subcommands for different operations:
 
@@ -31,7 +30,7 @@ Available subcommands:
 - `postprocess`: Post-process an existing URDF
 - `pybullet`: Run PyBullet simulation
 
-### Download and Post-process
+#### Download and Post-process
 
 To download a model from Onshape and apply post-processing:
 
@@ -41,7 +40,7 @@ kol run <onshape-document-url> <output-directory>
 
 To see additional configuration options, consult the config file [here](https://github.com/kscalelabs/onshape/blob/master/kol/onshape/config.py).
 
-### Download Only
+#### Download Only
 
 To only download a model from Onshape without post-processing:
 
@@ -51,7 +50,7 @@ kol download <document-url> <output-directory>
 
 Options are similar to the `run` subcommand.
 
-### Post-process Existing URDF
+#### Post-process Existing URDF
 
 To apply post-processing to an existing URDF file:
 
@@ -59,7 +58,7 @@ To apply post-processing to an existing URDF file:
 kol postprocess <urdf-path>
 ```
 
-### PyBullet Simulation
+#### PyBullet Simulation
 
 To run a PyBullet simulation with the processed URDF:
 
@@ -77,7 +76,7 @@ Options:
 - `--see-thru`: Use see-through mode for robot visualization
 - `--show-collision`: Show collision meshes
 
-## Examples
+### Examples
 
 1. Download and post-process an Onshape model:
 
