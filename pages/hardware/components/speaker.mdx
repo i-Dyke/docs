@@ -25,11 +25,13 @@ import soundfile as sf
 
 
 sound, sr = sf.read("test.wav") #sr is the sampling rate. sound is a numpy array.
-device = 35 #You can query the device ID using: sd.query_devices()
-
-sd.default.device = device
 sd.play(audio, sr, blocking=True)
 ```
+
+The default device that `sounddevice` use is most often the right one. Even if 
+two speakers are used, they will be both plugged into one amp. If additional speakers
+or mics are plugged in or if default selection is incorrect, you can list the
+available devices using `sd.query_devices()` and select one using `sd.default.device = ...`
 
 ### From Bits to Sound
 
@@ -45,7 +47,13 @@ Controlled by the driver. May have additional hardware here such as amps and pre
 
 Our implementation uses `soundfile` and `sounddevice`, which are libraries built to 
 manipulate audio files. Their functionalities for interacting with the sound card and 
-getting processed data from that is through PortAudio, an abstraction layer atop of ALSA.
+getting processed data is through PortAudio, an abstraction layer atop of ALSA.
+These can be set up on a fresh Jetson using `sudo apt-get install libportaudio2`
+and `pip install soundfile sounddevice`. ALSA is built into the kernel on the Jetson 
+and does not need to be installed.
+
+PortAudio lives here [github](https://github.com/PortAudio/portaudiob).
+ALSA lives here [github](https://github.com/alsa-project/alsa-lib).
 
 ### Other Terms
 

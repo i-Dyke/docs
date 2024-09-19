@@ -14,6 +14,10 @@ We are using the ArduCAM
 - [18MP Color Camera](https://www.arducam.com/product/arducam-pivariety-18mp-ar1820hs-color-camera-module-for-rpi-cam-b0367)
 - [Fisheye Lens](https://www.arducam.com/product/arducam-180-degree-fisheye-1-2-3-m12-mount-with-lens-adapter-for-raspberry-pi-high-quality-camera/)
 
+These are MIPI cameras, as oppose to USB cameras, and have higher data transfer rates.
+ArduCAM makes open source cameras and have a wide selection of lenses which is important 
+for us as we do not have neck actuation.
+
 Here is an example of using OpenCV to capture a frame:
 
 ```python
@@ -36,6 +40,7 @@ with Device.from_id(camera_id) as cam:
 ```
 
 The driver source code for the ArduCAM lives [here](https://github.com/ArduCAM/MIPI_Camera).
+The driver used for the python implementation is [v4l2py](https://github.com/tiagocoutinho/v4l2py/tree/master).
 
 ## From Physics to Pixels
 
