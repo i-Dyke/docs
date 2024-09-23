@@ -95,6 +95,11 @@ and kick off the training:
 python sim/train.py --env-id NEW_HUMANOID --num-envs 4
 ```
 
+**Freq Seen Bugs/ Errors**
+1. Onshape: only revolute and fastened joints. Set weights or material. Add joint limits in Onshape.
+2. Remove Base to Body Fixed Joint and the Base link. The K-Scale onshape to URDF converter includes these but they were removed in the stompy mini urdf
+
+
 ### Making it stand
 
 1. The best way to start is to make your new robot stand. In this case you want to comment out the rewards that are responsible for making the robot walk. See an example of a [reward config](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/envs/humanoids/stompymini_config.py#L163).
