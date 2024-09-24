@@ -1,3 +1,8 @@
 {
-  "intro": "Introduction"
+  "intro": "Introduction",
+  "cad": "Design CAD Model",
+  "simulate": "Verify in Simulation",
+  "build": "Build the Robot",
+  "firmware": "Flash the Firmware",
+  "use": "Use it!"
 }

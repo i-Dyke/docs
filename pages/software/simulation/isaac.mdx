@@ -6,13 +6,14 @@ This documentation is under construction and incomplete. Please [sign up here fo
 
 ## Isaac Gym
 
-A library for simulating Stompy in Isaac Gym. This library is built on top of the Isaac Gym library and Humanoid-gym and provides a simple interface for running experiments with Stompy. For a start, we have defined two tasks: getting up and walking.
+A library for simulating Stompy in Isaac Gym. This library is built on top of the Isaac Gym library and Humanoid-gym and provides a simple interface for running experiments with Stompy. We have defined the following tasks:
 
-We currently support Stompy mini, Xbot, G1 and H1 with more humanoids to come.
+- Getting up
+- Walking
 
-The walking task works reliably with upper body being fixed.
+We currently support Stompy Mini, XBot, Unitree G1 and H1 with more humanoids to come.
 
-The getting up task is still an open challenge!
+The walking task works reliably with the upper body fixed. The getting up task is still an open challenge!
 
 ### Getting Started
 
@@ -95,9 +96,13 @@ and kick off the training:
 python sim/train.py --env-id NEW_HUMANOID --num-envs 4
 ```
 
-**Freq Seen Bugs/ Errors**
-1. Onshape: only revolute and fastened joints. Set weights or material. Add joint limits in Onshape.
-2. Remove Base to Body Fixed Joint and the Base link. The K-Scale onshape to URDF converter includes these but they were removed in the stompy mini urdf
+**Frequently Seen Bugs and Errors**
+
+1. _Onshape_
+   - Only revolute and fastened joints
+   - Set weights or material
+   - Add joint limits in Onshape
+2. Remove Base to Body Fixed Joint and the Base link. The K-Scale Onshape to URDF converter includes these but they were removed in the Stompy Mini URDF.
 
 
 ### Making it stand
