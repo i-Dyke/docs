@@ -97,17 +97,6 @@ and kick off the training:
 python sim/train.py --env-id NEW_HUMANOID --num-envs 4
 ```
 
-**Frequently Seen Bugs and Errors**
-
-1. _Onshape_
-   - Only revolute and fastened joints
-   - Set weights or material
-   - Add joint limits in Onshape
-2. Remove Base to Body Fixed Joint and the Base link. The K-Scale Onshape to URDF converter includes these but they were removed in the Stompy Mini URDF.
-3. Flying Robot (walking then flying away like there is a strong gust)
-   Joint Limit in URDF ... [documentation being added]
-
-
 ### Making it stand
 
 1. The best way to start is to make your new robot stand. In this case you want to comment out the rewards that are responsible for making the robot walk. See an example of a [reward config](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/envs/humanoids/stompymini_config.py#L163).
@@ -125,3 +114,23 @@ We set up the logic so that your new robot should start to walk with basic confi
 2. The [gait reward](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/envs/humanoids/stompy_config.py#L146) is the most crucial single reward. You have to adapt the hyperparameters to your robot design to get it to work.
 3. If the robots tends to jump, use only one limb you will have to adapt the overall rewards schema to enforce proper behavior.
 4. If the setup is correct, you should see positive results after first 200-300 epochs. However, the robust policy will requires 2000-3000 epochs.
+
+
+## FAQ
+
+**Frequently Seen Bugs and Errors**
+
+1. _Onshape_
+   - Only revolute and fastened joints
+   - Set weights or material
+   - Add joint limits in Onshape
+2. Remove Base to Body Fixed Joint and the Base link. The K-Scale Onshape to URDF converter includes these but they were removed in the Stompy Mini URDF.
+3. Flying Robot (walking then flying away like there is a strong gust)
+   - Check effort and velocity in limits. For small servos around effort="24" velocity="30", For large humanoids like stompy mini, effort="80" and velocity="5"
+   - Check `def stiffness` and `def damping`. For stiffness servos should be ~20 for smaller robots using servos, ~150 for larger humanoids. For damping, should be ~0.5 for servo robots and ~10 for larger humanoids using actuators. 
+
+**Expected Behavior**
+These are subject to how you change some of the training params, but generally using the repo mostly as is
+1. Episode Length should be >2k 
+2. Mean reward ~40 for quadruped.
+3. Mean reward ~[ ] for humanoid
