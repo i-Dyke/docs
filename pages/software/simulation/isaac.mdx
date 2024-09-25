@@ -81,6 +81,7 @@ The best starting point would be [stompymini](https://github.com/kscalelabs/sim/
 
 1. Create a folder with a new robot [here](https://github.com/kscalelabs/sim/tree/master/sim/resources).
 2. Add `joint.py` file setting up basic properties and joint configuration - see an [example](https://github.com/kscalelabs/sim/blob/master/sim/resources/stompymini/joints.py).
+   - Make sure to update the p_gains (def stiffness) and d_gains (def damping), such that the joints match the URDF joint names. 
 3. Update [height](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/resources/stompymini/joints.py#L102) and default rotation of your humanoid.
 4. Add a new embodiment configuration and environment [here](https://github.com/kscalelabs/sim/tree/master/sim/envs/humanoids).
 5. Add a new embodiment to the [registry](https://github.com/kscalelabs/sim/blob/master/sim/envs/__init__.py).
@@ -103,6 +104,8 @@ python sim/train.py --env-id NEW_HUMANOID --num-envs 4
    - Set weights or material
    - Add joint limits in Onshape
 2. Remove Base to Body Fixed Joint and the Base link. The K-Scale Onshape to URDF converter includes these but they were removed in the Stompy Mini URDF.
+3. Flying Robot (walking then flying away like there is a strong gust)
+   Joint Limit in URDF ... [documentation being added]
 
 
 ### Making it stand
