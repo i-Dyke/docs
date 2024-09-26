@@ -61,3 +61,30 @@ ALSA lives here [github](https://github.com/alsa-project/alsa-lib).
 is common for audio, 48 khz for video, and higher specification audio have higher sampling rates such as 96 khz.
 - **Multiplexing** = the process of interleaving multiple signals (eg. Spotify 
 and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.
+
+### Set up 
+(download miniconda)
+```shell
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+chmod +x [Miniconda3-latest-Linux-aarch64.sh](http://miniconda3-latest-linux-aarch64.sh/)
+./Miniconda3-latest-Linux-aarch64.sh
+source ~/.bashrc
+```
+
+(download your code using soundfile, sounddevice)
+```shell
+git clone https://github.com/kscalelabs/functions.git
+git branch -r
+git checkout -b audio
+```
+
+download dependencies 
+```shell
+conda create —name func_conda python=3.8.19
+conda activate func_conda
+pip install numpy sounddevice soundfile
+sudo apt-get install libportaudio2
+```
+
+then run! 
+Note that the automatic sd.default.device is the right one. Comment out that line when running, unless running into issues. 
