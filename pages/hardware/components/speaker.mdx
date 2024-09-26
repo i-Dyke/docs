@@ -63,6 +63,14 @@ is common for audio, 48 khz for video, and higher specification audio have highe
 and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.
 
 ### Set up 
+Flash the jetson with Nvidia default image
+https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html 
+1. Download Jetson SDK manager, must be Ubuntu 20.0 system
+2. For Orin, flash by shorting GND and FC REC, while plugged in power jack and connect to type C. For AGX just connect to USB C (must be the one next to the pins)
+3. Jetpack 6.0. Follow the steps. On step 2, check everything
+4. The downloading and installation can take ~1 hour. 
+
+
 (download miniconda)
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
