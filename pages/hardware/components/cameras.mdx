@@ -1,6 +1,7 @@
 import { Callout } from 'nextra/components'
 import Image from 'next/image'
-import bayer from './bayer.png'
+import bayer from './pics/bayer.png'
+import sensing_cameras from './pics/sensing-cameras.png'
 
 <Callout type="warning" emoji="⚠️">
 This documentation is under construction and incomplete. We are in the process of choosing a camera that works well with our robots.
@@ -9,13 +10,26 @@ This documentation is under construction and incomplete. We are in the process o
 
 # Cameras
 
-We are using the ArduCAM
+## Sensing
+
+The preferred camera to use with the [Seeed Studio J501 carrier board](mcu.mdx) is the [3MP SG3S-ISX031C-GMSL2F](https://www.sensing-world.com/en/pd.jsp?id=23) from Sensing.
+
+- [Camera Datasheet](https://autosensee.feishu.cn/file/NvhcbDq4Wo0e4DxG1d7cP19QnIf)
+- [GMSL Extension Board](https://www.seeedstudio.com/reServer-Industrial-J501-GMSL-extension-board-p-5949.html)
+
+This camera comes with several different possible lenses. We are using the 118 degree horizontal field of view lens.
+
+<Image src={sensing_cameras} alt="Sensing Cameras" style={{ marginTop: 10 }} />
+
+## Arducam
+
+We have experimented with the ArduCAM
 
 - [18MP Color Camera](https://www.arducam.com/product/arducam-pivariety-18mp-ar1820hs-color-camera-module-for-rpi-cam-b0367)
 - [Fisheye Lens](https://www.arducam.com/product/arducam-180-degree-fisheye-1-2-3-m12-mount-with-lens-adapter-for-raspberry-pi-high-quality-camera/)
 
 These are MIPI cameras, as oppose to USB cameras, and have higher data transfer rates.
-ArduCAM makes open source cameras and have a wide selection of lenses which is important 
+ArduCAM makes open source cameras and have a wide selection of lenses which is important
 for us as we do not have neck actuation.
 
 Here is an example of using OpenCV to capture a frame:
