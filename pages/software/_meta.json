@@ -1,8 +1,9 @@
 {
   "cli": "CLI",
   "onshape": "Onshape",
+  "actuators": "Actuators",
   "models": "Models",
-  "klang": "Klang",
+  "klang": "K-Lang",
   "simulation": "Simulation",
   "teleop": "Teleoperation"
 }

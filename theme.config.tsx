@@ -5,10 +5,10 @@ const siteHost = "docs.kscale.dev";
 const siteUrl = `https://${siteHost}`;
 const siteSocialUrl = `${siteUrl}/social.png`;
 const siteDesc = `An open source community building a useful humanoid robot.`;
-const siteTitle = "K-Scale Labs Docs";
+const siteTitle = "K-Scale Docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>K-Scale Labs Docs</span>,
+  logo: <span>K-Scale Docs</span>,
   project: {
     link: "https://github.com/kscalelabs/docs",
   },
