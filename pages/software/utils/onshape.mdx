@@ -1,16 +1,20 @@
-import { Callout } from 'nextra/components'
+import { Card, Cards } from 'nextra/components'
+import { FaGithub } from 'react-icons/fa'
 import Image from 'next/image'
 import onshape2urdf_example from './pics/onshape2urdf_example.png'
 
-<Callout type="warning" emoji="⚠️">
-This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
-</Callout>
-
 ## Onshape to URDF Converter
 
-`kol` is what we use at K-Scale for interacting with OnShape. It is a wrapper around the OnShape API that allows us to easily import parts, postprocess them, and export them in a variety of formats. This is a key part of our mission to make robots more accessible --- Onshape is free, easy to use, and encourages open-source development through FeatureScript.
+This library is what we use at K-Scale for interacting with OnShape. It is a wrapper around the OnShape API that allows us to easily import parts from OnShape into our projects.
 
-In a single CLI, we support functions such as mesh simplification, mesh merging, joint cleanup, transferring between MJCF/URDF formats, and more.
+<Cards>
+  <Card
+    icon={<FaGithub />}
+    title="Github"
+    href="https://github.com/kscalelabs/onshape"
+    description="Contribute to our open-source projects"
+  />
+</Cards>
 
 Here is an example of a robot converted using the `kol` CLI, with the input OnShape model on the right and the output URDF on the left.
 
@@ -28,13 +32,15 @@ To reproduce the above example, you can run the following command:
 kol run https://cad.onshape.com/documents/3037473d78845106e95befb1/w/e3a76b21fff5430d0e9ecfb5/e/1d74e2fed25abed64482828a robot
 ```
 
-See the source code for this project [here](https://github.com/kscalelabs/onshape).
-
 ### Installation
 
 ```bash
-pip install 'kscale-onshape-library[all]'
+pip install kscale-onshape-library
+pip install 'kscale-onshape-library @ git+https://github.com/kscalelabs/onshape.git@master'  # Install from Github
+pip install 'kscale-onshape-library[all]'  # Install all dependencies
 ```
+
+In order to access the OnShape API, you need to define `ONSHAPE_ACCESS_KEY` and `ONSHAPE_SECRET_KEY` using a key generated [here](https://dev-portal.onshape.com/keys).
 
 ### Usage
 
@@ -86,32 +92,14 @@ To run a PyBullet simulation with the processed URDF:
 kol pybullet <urdf-path> [options]
 ```
 
-Options:
-- `<urdf_path>`: Path to the URDF file to simulate (required)
-- `--dt FLOAT`: Time step for simulation (default: 0.01)
-- `-n`, `--hide-gui`: Hide the PyBullet GUI
-- `--no-merge`: Do not merge fixed links
-- `--hide-origin`: Do not show the origin of the robot
-- `--show-inertia`: Visualize the inertia frames
-- `--see-thru`: Use see-through mode for robot visualization
-- `--show-collision`: Show collision meshes
+### Simulation
 
-### Examples
+The output of the onshape library is simply a robot floating in space. Luckily, most simulators which support URDFs are able to define an environment within code. More changes are needed to make MJCF files simulation ready. The pipeline also generates an MJCF file by default.
 
-1. Download and post-process an Onshape model:
+Support for other file formats like USD files for IsaacLab will be helpful as well.
 
-```bash
-kol run https://cad.onshape.com/documents/... ./robot
-```
+### Other Links
 
-2. Post-process an existing URDF:
-
-```bash
-kol postprocess ./path/to/model.urdf voxel_size=0.005
-```
-
-3. Run PyBullet simulation:
-
-```bash
-kol pybullet ./output/model.urdf
-```
+- [OnShape API explorer](https://cad.onshape.com/glassworks/explorer/#/Assembly/getFeatures)
+- [OnShape API documentation](https://onshape-public.github.io/docs/api-intro/)
+- [OnShape-to-Robot Library](https://github.com/Rhoban/onshape-to-robot)
