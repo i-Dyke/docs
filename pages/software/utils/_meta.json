@@ -1,4 +1,5 @@
 {
   "onshape": "Onshape to URDF",
-  "urdf2mjcf": "URDF to Mujoco"
+  "urdf2mjcf": "URDF to Mujoco",
+  "colorlogging": "Color Logging"
 }

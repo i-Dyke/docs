@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/hardware/mini.mdx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/hardware/mini.mdx", "pages/software/utils/colorlogging.mdx", "pages/hardware/andy.mdx"],
   "exclude": ["node_modules"]
 }
