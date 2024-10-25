@@ -129,6 +129,27 @@ We set up the logic so that your new robot should start to walk with basic confi
 3. If the robots tends to jump, use only one limb you will have to adapt the overall rewards schema to enforce proper behavior.
 4. If the setup is correct, you should see positive results after first 200-300 epochs. However, the robust policy will requires 2000-3000 epochs.
 
+## Common Issues
+
+After cloning Isaac Gym, sometimes the bindings mysteriously disappear.
+
+To fix this, update the submodule:
+
+```bash
+git submodule update --init --recursive
+```
+
+If you observe errors with libpython3.8.so.1.0, you can try the following:
+
+```bash
+export LD_LIBRARY_PATH=PATH_TO_YOUR_ENV/lib:$LD_LIBRARY_PATH
+```
+
+If you still see segmentation faults, you can try the following:
+
+```bash
+sudo apt-get vulkan1
+```
 
 ## FAQ
 
@@ -143,7 +164,7 @@ We set up the logic so that your new robot should start to walk with basic confi
    - Check effort and velocity in limits. For small servos around effort="24" velocity="30", For large humanoids like stompy mini, effort="80" and velocity="5"
    - Check `def stiffness` and `def damping`. For stiffness servos should be ~20 for smaller robots using servos, ~150 for larger humanoids. For damping, should be ~0.5 for servo robots and ~10 for larger humanoids using actuators.
 
-**Expected Behavior**
+### Expected Behavior
 
 These are subject to how you change some of the training params, but generally using the repo mostly as is
 
