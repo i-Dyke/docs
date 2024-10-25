@@ -1,0 +1,54 @@
+import Image from 'next/image'
+import urdf2mjcf_example from './pics/urdf2mjcf_example.png'
+
+# urdf2mjcf
+
+`urdf2mjcf` is a tool for converting URDF models to Mujoco XML. You can see the source code [here](https://github.com/kscalelabs/urdf2mjcf). Here is an example, with the input URDF on the right and the output MJCF on the left:
+
+<Image
+  src={urdf2mjcf_example}
+  alt="URDF to MJCF"
+  width="100%"
+  className="mx-auto"
+  style={{ marginTop: '1em', marginBottom: '1em' }}
+/>
+
+## Installation
+
+You can install the package using `pip`:
+
+```bash
+pip install urdf2mjcf
+```
+
+## Usage
+
+### Command Line
+
+To run the conversion script from the command line, use:
+
+```bash
+urdf2mjcf path/to/your/robot.urdf
+```
+
+This will save the MJCF file in the same directory as the URDF file.
+
+To see all the options, use:
+
+```bash
+urdf2mjcf -h
+```
+
+### Python
+
+To run the conversion script from Python, use:
+
+```python
+from urdf2mjcf import run
+
+run(
+    urdf_path="path/to/your/robot.urdf",
+    mjcf_path="path/to/save/robot.mjcf",
+    copy_meshes=True,
+)
+```
