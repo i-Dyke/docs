@@ -1,4 +1,6 @@
 import { Callout } from 'nextra/components'
+import Image from 'next/image'
+import onshape2urdf_example from './pics/onshape2urdf_example.png'
 
 <Callout type="warning" emoji="⚠️">
 This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
@@ -9,6 +11,22 @@ This documentation is under construction and incomplete. Please [sign up here fo
 `kol` is what we use at K-Scale for interacting with OnShape. It is a wrapper around the OnShape API that allows us to easily import parts, postprocess them, and export them in a variety of formats. This is a key part of our mission to make robots more accessible --- Onshape is free, easy to use, and encourages open-source development through FeatureScript.
 
 In a single CLI, we support functions such as mesh simplification, mesh merging, joint cleanup, transferring between MJCF/URDF formats, and more.
+
+Here is an example of a robot converted using the `kol` CLI, with the input OnShape model on the right and the output URDF on the left.
+
+<Image
+  src={onshape2urdf_example}
+  alt="Onshape to URDF"
+  width="100%"
+  className="mx-auto"
+  style={{ marginTop: '1em', marginBottom: '1em' }}
+/>
+
+To reproduce the above example, you can run the following command:
+
+```bash
+kol run https://cad.onshape.com/documents/3037473d78845106e95befb1/w/e3a76b21fff5430d0e9ecfb5/e/1d74e2fed25abed64482828a robot
+```
 
 ### Installation
 
