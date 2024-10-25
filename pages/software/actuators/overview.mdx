@@ -3,7 +3,37 @@ import { Card, Cards } from 'nextra/components'
 import { FaGithub, FaDiscord, FaDiscourse } from 'react-icons/fa'
 import architecture from './pics/architecture.png'
 
-`actuator` is a Python package developed by K-Scale Labs to make it easy to control robot actuators. Here is a high-level overview of the package architecture.
+# Actuator Package
+
+```bash
+sudo apt install pkg-config libudev-dev  # If not installed
+pip install actuator
+```
+
+`actuator` is a Python and Rust package developed by K-Scale Labs to make it easy to control robot actuators.
+
+<Cards>
+  <Card
+    icon={<FaGithub />}
+    title="Code"
+    href="https://github.com/kscalelabs/actuator"
+    description="Github project page"
+  />
+  <Card
+    icon={<FaDiscord />}
+    title="Support"
+    href="https://discord.gg/kscale"
+    description="Chat with us and other contributors"
+  />
+  <Card
+    icon={<FaDiscourse />}
+    title="Forum"
+    href="https://forum.kscale.dev"
+    description="Discuss with us and other contributors"
+  />
+</Cards>
+
+Here is a high-level overview of the package architecture.
 
 <Image
   alt="Actuator Package Architecture"
@@ -51,28 +81,5 @@ Note that some actuators have additional requirements. See the individual actuat
     title="Robstride"
     href="./robstride"
     description="Robstride USB to CAN controller"
-  />
-</Cards>
-
-### Links
-
-<Cards>
-  <Card
-    icon={<FaGithub />}
-    title="Code"
-    href="https://github.com/kscalelabs/actuator"
-    description="Github project page"
-  />
-  <Card
-    icon={<FaDiscord />}
-    title="Support"
-    href="https://discord.gg/kscale"
-    description="Chat with us and other contributors"
-  />
-  <Card
-    icon={<FaDiscourse />}
-    title="Forum"
-    href="https://forum.kscale.dev"
-    description="Discuss with us and other contributors"
   />
 </Cards>
