@@ -1,3 +1,5 @@
+import { Card, Cards } from 'nextra/components'
+import { FaGithub } from 'react-icons/fa'
 import { Callout } from 'nextra/components'
 
 <Callout type="warning" emoji="⚠️">
@@ -6,9 +8,22 @@ This documentation is under construction and incomplete. Please [sign up here fo
 
 ## The `kscale` CLI
 
-The `kscale` CLI is what we use to interact with the [K-Scale store](https://kscale.store/). This will allow for users to download and upload URDF files completely through our CLI or through our website, with support for auto-fetching the latest version of URDF and mesh files from continually updating Onshape documents.
+The `kscale` CLI is what we use to interact with [K-Scale web services](https://kscale.store/).
+
+<Cards>
+  <Card
+    icon={<FaGithub />}
+    title="Github"
+    href="https://github.com/kscalelabs/kscale"
+    description="Contribute to our open-source projects"
+  />
+</Cards>
+
+This CLI is built in Python and is fully open-source.
 
 ### Installation
+
+The easiest way to install the `kscale` CLI is to use `pip`:
 
 ```bash
 pip install kscale

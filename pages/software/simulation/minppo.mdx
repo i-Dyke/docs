@@ -1,0 +1,64 @@
+import { Card, Cards } from 'nextra/components'
+import { FaGithub } from 'react-icons/fa'
+import { Callout } from 'nextra/components'
+
+<Callout type="warning" emoji="⚠️">
+This documentation is under construction and incomplete. Please [sign up here for K-Scale updates](https://forms.gle/xkba4WWGD5Pmayj96) and check back later for our progress.
+</Callout>
+
+## Minimal PPO Implementation
+
+```bash
+pip install minppo
+```
+
+We provide a minimal implementation of training a robotic agent to do simple tasks, using the Brax framework.
+
+<Cards>
+  <Card
+    icon={<FaGithub />}
+    title="Github"
+    href="https://github.com/kscalelabs/minppo"
+    description="Contribute to our open-source projects"
+  />
+</Cards>
+
+## Installation
+
+Brax is a versitile physics engine for training agents in reinforcement learning that can work on your local computer or on a cluster. The easiest way to install the `minppo` package is to use `pip`:
+
+```bash
+pip install minppo
+```
+
+### Command Line Interface
+
+There are some default configurations in the `minppo/configs` directory which you can use to get started:
+
+```bash
+minppo train stompy_pro
+```
+
+Alternatively, you can specify the path to the config file directly:
+
+```bash
+minppo train configs/stompy_pro.yaml
+```
+
+Additionally, you can use dot notation to override specific parameters:
+
+```bash
+minppo train configs/stompy_pro.yaml 'rl.num_env_steps=1000'
+```
+
+You can visualize the environment with:
+
+```bash
+minppo env stompy_pro
+```
+
+Finally, you can run inference on a trained model with:
+
+```bash
+minppo infer stompy_pro 'inference.model_path=path/to/model.pkl'
+```
