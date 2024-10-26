@@ -4,7 +4,7 @@ export default {
     type: "separator",
     title: "Software",
   },
-  cli: "CLI",
+  cli: "Command Line",
   actuators: "Actuators",
   models: "Models",
   klang: "K-Lang",
