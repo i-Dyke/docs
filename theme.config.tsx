@@ -17,24 +17,11 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/kscalelabs/docs/tree/master/",
   editLink: {
-    text: "Edit this page on GitHub",
-  },
-  useNextSeoProps() {
-    const { asPath } = useRouter();
-    if (asPath === "/") {
-      return {
-        titleTemplate: siteTitle,
-      };
-    } else {
-      return {
-        titleTemplate: `%s – ${siteTitle}`,
-      };
-    }
+    content: "Edit this page on GitHub",
   },
   sidebar: {
-    titleComponent,
     toggleButton: true,
-    defaultMenuCollapseLevel: 2,
+    defaultMenuCollapseLevel: 1,
   },
   head: function useHead() {
     const config = useConfig();
@@ -91,19 +78,5 @@ const config: DocsThemeConfig = {
     component: null,
   },
 };
-
-function titleComponent({
-  title,
-}: {
-  title: string;
-  type: string;
-  route: string;
-}) {
-  if (title === "Software" || title === "Hardware" || title === "Community") {
-    return <b>{title}</b>;
-  }
-
-  return <span>{title}</span>;
-}
 
 export default config;

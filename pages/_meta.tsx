@@ -1,14 +1,28 @@
 export default {
   index: "Home",
-  hardware: "Hardware",
-  software: "Software",
-  community: "Community",
-  about: {
-    title: "About",
-    type: "page",
-    href: "https://kscale.dev/",
-    newWindow: true,
+  "-- Software": {
+    type: "separator",
+    title: "Software",
   },
+  cli: "CLI",
+  actuators: "Actuators",
+  models: "Models",
+  klang: "K-Lang",
+  simulation: "Simulation",
+  teleop: "Teleoperation",
+  utils: "Utilities",
+  "-- Hardware": {
+    type: "separator",
+    title: "Hardware",
+  },
+  kbrain: "K-Brain",
+  components: "Components",
+  "-- Community": {
+    type: "separator",
+    title: "Community",
+  },
+  residency: "Residency",
+  khacks: "K-Hacks",
   "-- Links": {
     type: "separator",
     title: "Links",
@@ -21,6 +35,12 @@ export default {
   contact: {
     title: "Contact ↗",
     href: "https://x.com/kscalelabs",
+    newWindow: true,
+  },
+  about: {
+    title: "About",
+    type: "page",
+    href: "https://kscale.dev/",
     newWindow: true,
   },
 };
