@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Card, Cards } from 'nextra/components'
+import { Cards } from 'nextra/components'
 import { FaGithub, FaDiscord, FaTwitter, FaDiscourse } from 'react-icons/fa'
 import banner from './pics/banner.png'
 
@@ -19,25 +19,25 @@ We'd love it if you'd join us on this journey!
 <br />
 
 <Cards>
-  <Card
+  <Cards.Card
     icon={<FaGithub />}
     title="Github"
     href="https://github.com/kscalelabs"
     description="Contribute to our open-source projects"
   />
-  <Card
+  <Cards.Card
     icon={<FaDiscord />}
     title="Discord"
     href="https://discord.gg/kscale"
     description="Chat with us and other contributors"
   />
-  <Card
+  <Cards.Card
     icon={<FaTwitter />}
     title="Twitter"
     href="https://x.com/kscalelabs"
     description="Follow us on X for updates and announcements"
   />
-  <Card
+  <Cards.Card
     icon={<FaDiscourse />}
     title="Forum"
     href="https://forum.kscale.dev"

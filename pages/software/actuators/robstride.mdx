@@ -1,4 +1,4 @@
-import { Card, Cards } from 'nextra/components'
+import { Cards } from 'nextra/components'
 import { FaRust, FaGithub, FaDiscord } from 'react-icons/fa'
 
 # Robstride Actuator
@@ -13,13 +13,13 @@ cargo install robstride  # Install the Rust package
 The `actuator` package is designed to work with the Robstride USB to CAN controller, which is built on the CH341 USB controller. This requires some additional setup to get started.
 
 <Cards>
-  <Card
+  <Cards.Card
     icon={<FaGithub />}
     title="Code"
     href="https://github.com/kscalelabs/actuator"
     description="Github project page"
   />
-  <Card
+  <Cards.Card
     icon={<FaRust />}
     title="Rust"
     href="https://crates.io/crates/robstride"
