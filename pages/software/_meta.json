@@ -2,7 +2,7 @@
   "cli": "CLI",
   "actuators": "Actuators",
   "models": "Models",
-  "klang": "Klang",
+  "klang": "K-Lang",
   "simulation": "Simulation",
   "teleop": "Teleoperation",
   "utils": "Utilities"
