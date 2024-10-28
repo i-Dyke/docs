@@ -46,6 +46,8 @@ Note that there are some additional steps needed before the Robstride USB contro
 1. Install [this driver](https://github.com/WCHSoftGroup/ch341ser_linux) for the CH341 USB controller.
 2. This should create a `/dev/ttyUSB0` or `/dev/ttyCH341USB0` device - you should check which one by doing `ls /dev/tty*`. You might need to the change the permissions:
 
+Note that if you successfully installed the CH341 driver but the usb device wasn't created, another service may be interfering with the CH341 driver. Try running ```dmesg | grep ch341``` see if other services are claiming the interface. In some cases, ```brltty``` may be interrupting the CH341 setup in which case you should unload it or remove it entirely. 
+
 ```bash
 sudo chmod 666 /dev/ttyCH341USB0
 ```
