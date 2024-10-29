@@ -1,4 +1,4 @@
 export default {
-  overview: "Overview",
+  intro: "Introduction",
   robstride: "Robstride",
 };
