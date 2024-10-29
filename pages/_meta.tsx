@@ -6,7 +6,6 @@ export default {
   },
   cli: "Command Line",
   kscaleos: "K-Scale OS",
-  klang: "Klang",
   actuators: "Actuators",
   models: "Models",
   simulation: "Simulation",
