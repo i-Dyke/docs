@@ -5,94 +5,139 @@ import speaker_and_mic_wiring from './speaker_and_mic_wiring.png'
 # Microphone
 
 <Callout type="warning" emoji="⚠️">
-  This documentation is under construction and incomplete. We are in the process
-  of choosing a microphone that works well with our robots.
+  This documentation is under construction. We currently use the ReSpeaker Mic Array v2.0 for our robots.
 </Callout>
 
+## Hardware Setup
 
-At the moment, we are using the this microphone from ReSpeaker ([1](https://www.seeedstudio.com/ReSpeaker-Mic-Array-v2-0.html))
-It can be wired up to the Jetson Orin as such:
+We use the ReSpeaker Mic Array v2.0 ([product link](https://www.seeedstudio.com/ReSpeaker-Mic-Array-v2-0.html)), which features:
 
-<Image src={speaker_and_mic_wiring} alt="Speaker and Mic Wiring" width={500} 
-height={312} style={{ maxWidth: '100%', height: 'auto' }}/>
+- 4 high-performance digital microphones
+- 12 RGB LEDs
+- USB connectivity
+- Built-in algorithms for DOA (Direction of Arrival) and beamforming
 
-Here is an example of code to play a wav file on the speaker:
+The microphone connects to the Jetson Orin via USB as shown:
+
+<Image src={speaker_and_mic_wiring} alt="Speaker and Mic Wiring" width={500} height={312} style={{ maxWidth: '100%', height: 'auto' }}/>
+
+## Recording Audio
+
+Here's a basic example of recording audio using the microphone:
 
 ```python
 import numpy as np
 import sounddevice as sd
 import soundfile as sf
 
-dur_in_sec = 10.0
-fs = 44100
+def record_audio(duration=10.0, sample_rate=44100, channels=1):
+    """Record audio from the default microphone.
 
-print("Listening...")
-audio_data = sd.rec(int(dur_in_sec * fs), samplerate=fs, channels=1, blocking=True)
-sf.write("../play_audio/recorded_audio.wav", audio_data, 44100)
+    Args:
+        duration (float): Recording duration in seconds
+        sample_rate (int): Sample rate in Hz
+        channels (int): Number of audio channels
+    """
+    print("Recording...")
+    audio_data = sd.rec(
+        int(duration * sample_rate),
+        samplerate=sample_rate,
+        channels=channels,
+        blocking=True
+    )
+    print("Done recording!")
+    return audio_data
 
-```
-The default device that `sounddevice` use is most often the right one. Even if 
-two speakers are used, they will be both plugged into one amp. If additional speakers
-or mics are plugged in or if default selection is incorrect, you can list the
-available devices using `sd.query_devices()` and select one using `sd.default.device = ...`
-
-### From Bits to Sound
-
-This is the path sound takes on the linux system. It is similar to the speaker (in reverse).
-
-1. **Microphone**: Captures sound and converts it to an electrical signal.
-2. Sound Card acts as the Digital to Analog Converter (**DAC**)
-3. **Driver**: The Advanced LInux Sound Architecture (ALSA) drives the digital 
-to analog conversion and writes the bytes to the output.
-4. **Sound Server**: Most basically, orchestrates device driver to work with 
-
-Our implementation uses `soundfile` and `sounddevice`, which are libraries built to 
-manipulate audio files. Their functionalities for interacting with the sound card and 
-getting processed data is through PortAudio, an abstraction layer atop of ALSA.
-These can be set up on a fresh Jetson using `sudo apt-get install libportaudio2`
-and `pip install soundfile sounddevice`. ALSA is built into the kernel on the Jetson 
-and does not need to be installed.
-
-PortAudio lives here [github](https://github.com/PortAudio/portaudiob).
-ALSA lives here [github](https://github.com/alsa-project/alsa-lib).
-
-### With Digital MEMS Microphones
-The ReSpeaker Microphone is a MEMS microphone. The mic sensor onboard is the MP34DT01 
-which outputs PDM (Pulse-Density Modulation) data. This is already digital data as opposed 
-to analog.
-
-
-
-### Set up 
-Flash the jetson with Nvidia default image
-https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html 
-1. Download Jetson SDK manager, must be Ubuntu 20.0 system
-2. For Orin, flash by shorting GND and FC REC, while plugged in power jack and connect to type C. For AGX just connect to USB C (must be the one next to the pins)
-3. Jetpack 6.0. Follow the steps. On step 2, check everything
-
-(download miniconda)
-```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
-chmod +x [Miniconda3-latest-Linux-aarch64.sh](http://miniconda3-latest-linux-aarch64.sh/)
-./Miniconda3-latest-Linux-aarch64.sh
-source ~/.bashrc
+# Example usage
+audio = record_audio()
+sf.write("recorded_audio.wav", audio, 44100)
 ```
 
-(download your code using soundfile, sounddevice)
-```shell
-git clone https://github.com/kscalelabs/functions.git
-git branch -r
-git checkout -b audio
+### Device Selection
+The default audio device is usually correct, but you can:
+- List available devices: `sd.query_devices()`
+- Set a specific device: `sd.default.device = [device_id]`
+- Get current device info: `sd.query_devices(sd.default.device[0])`
+
+## Audio Signal Path
+
+For the ReSpeaker MEMS microphones:
+
+1. **Microphone Array** → MP34DT01 MEMS microphones capture audio
+2. **Digital Processing** → Outputs PDM (Pulse-Density Modulation) data
+3. **USB Interface** → Handles data transfer to the Jetson
+4. **Software Stack**
+
+## Physical Principles of Audio Recording
+
+### MEMS Microphone Technology
+
+The ReSpeaker uses MEMS (Micro-Electrical-Mechanical Systems) microphones, specifically the MP34DT01. Here's how they work:
+
+1. **Mechanical Structure**
+   - A thin membrane (diaphragm) suspended over a fixed backplate
+   - Forms a variable capacitor where the membrane moves with sound waves
+   - Typical membrane size: 0.5-1mm diameter, ~1μm thick
+
+2. **Sound to Electrical Conversion**
+
+   ```
+   Sound Wave → Membrane Vibration → Capacitance Change → Electrical Signal
+   ```
+
+3. **Digital Output**
+   - Unlike analog mics, MEMS mics output digital PDM (Pulse Density Modulation)
+   - PDM represents analog amplitude through pulse density:
+
+     ```
+     Analog: ～～～～
+     PDM:   _▄_▄▄_▄_▄▄▄_▄  (Higher amplitude = more pulses)
+     ```
+
+### Array Processing
+
+The ReSpeaker's 4-mic array enables:
+
+1. **Beamforming**
+   ```
+   Mic 1: ----sound1----→
+   Mic 2: ---sound1-delay→  → Digital Processing → Enhanced Signal
+   Mic 3: --sound1-delay2→
+   Mic 4: -sound1-delay3-→
+   ```
+   - Uses time differences between mics
+   - Constructively combines desired direction
+   - Destructively cancels other directions
+
+2. **Direction of Arrival (DOA)**
+   - Calculates sound source angle using:
+     ```
+     θ = arcsin(c × Δt / d)
+     where:
+     c = speed of sound
+     Δt = time delay between mics
+     d = distance between mics
+     ```
+
+### Sampling Process
+
+1. **Temporal Sampling**
+   ```
+   Continuous: ～～～～～
+   Sampled:    • • • • •
+   ```
+   - 44.1kHz standard (captures up to 22.05kHz per Nyquist)
+   - Each sample is typically 16-bit (65,536 amplitude levels)
+
+2. **Spatial Sampling**
+   - 4 mics in circular array
+   - Spatial Nyquist frequency: f = c/(2d)
+   - Where d is mic spacing (~4.36cm on ReSpeaker)
+
+### Digital Signal Chain
+
 ```
-
-download dependencies 
-```shell
-conda create —name func_conda python=3.8.19
-conda activate func_conda
-pip install numpy sounddevice soundfile
-sudo apt-get install libportaudio2
+                                            ┌→ Beamforming
+Sound → MEMS → PDM → Decimation Filter → PCM┼→ DOA
+                                            └→ Audio Output
 ```
-
-then run! 
-Note that the automatic sd.default.device is the right one. Comment out that line when running, unless running into issues. 
-

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Callout, Cards } from "nextra/components";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaRust, FaPython } from "react-icons/fa";
 import arch from "./pics/klang-arch.svg";
 import klang_interface from "./pics/klang-interface.png";
 
@@ -21,6 +21,18 @@ pip install pyklang  # To install the Python frontend
     title="Github"
     href="https://github.com/kscalelabs/klang"
     description="Contribute to our open-source projects"
+  />
+  <Cards.Card
+    icon={<FaRust />}
+    title="Rust"
+    href="https://crates.io/crates/klang"
+    description="Pure-Rust implementation"
+  />
+  <Cards.Card
+    icon={<FaPython />}
+    title="Python"
+    href="https://pypi.org/project/pyklang"
+    description="Python frontend"
   />
 </Cards>
 

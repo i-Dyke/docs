@@ -33,7 +33,7 @@ two speakers are used, they will be both plugged into one amp. If additional spe
 or mics are plugged in or if default selection is incorrect, you can list the
 available devices using `sd.query_devices()` and select one using `sd.default.device = ...`
 
-### From Bits to Sound
+## From Bits to Sound
 
 This is the path sound takes on the linux system.
 
@@ -55,14 +55,15 @@ and does not need to be installed.
 PortAudio lives here [github](https://github.com/PortAudio/portaudiob).
 ALSA lives here [github](https://github.com/alsa-project/alsa-lib).
 
-### Other Terms
+## Other Terms
 
 - **Sampling Rate** = how many times per second information is captured. 44.1 khz 
 is common for audio, 48 khz for video, and higher specification audio have higher sampling rates such as 96 khz.
 - **Multiplexing** = the process of interleaving multiple signals (eg. Spotify 
 and Youtube) into a single signal at the same time. May require resampling if sampling rates are different.
 
-### Set up 
+## Set up 
+
 Flash the jetson with Nvidia default image
 https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html 
 1. Download Jetson SDK manager, must be Ubuntu 20.0 system

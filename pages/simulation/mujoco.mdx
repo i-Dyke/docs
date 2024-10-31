@@ -1,7 +1,7 @@
 import { Cards } from 'nextra/components'
 import { FaGithub } from 'react-icons/fa'
 
-## Mujoco Simulator
+# Mujoco
 
 A simple and efficient library for training humanoid locomotion in MJX and MuJoCo.
 
@@ -14,7 +14,7 @@ A simple and efficient library for training humanoid locomotion in MJX and MuJoC
   />
 </Cards>
 
-### Installation
+## Installation
 
 1. Clone this repository:
 ```bash
@@ -39,11 +39,11 @@ Finally, add your Weights & Biases API key via conda:
 conda env config vars set WANDB_API_KEY=<your api key>
 ```
 
-### MJX Gym Usage
+## MJX Gym Usage
 
 MJX Gym is a library for training and evaluating reinforcement learning agents in MJX environments. It is built on top of the Brax library and provides a simple interface for running experiments with Stompy and other humanoid formfactors. Currently, we support walking but plan on adding more tasks and simulator environments in the future.
 
-#### Training
+### Training
 
 For quick experimentation, you may specify all relevant training configurations via YAML files, and simply run train.py with the desired configuration. Our configurations allow for rapid reward function prototyping, environment specification, and hyperparameter tuning. Additionally, all training results are tracked and logged using Weights & Biases.
 
@@ -56,7 +56,7 @@ Then, run the following command:
 python train.py --config experiments/default_humanoid_walk.yaml
 ```
 
-#### Testing and Rendering
+### Testing and Rendering
 
 We provide an easy way to test and render the trained model using the play.py script. This script loads the trained model and runs it in the specified environment.
 
@@ -81,7 +81,7 @@ While the model performs well in the MJX environment, it is important to note th
 
 Getting Stompy to walk in MJX is a challenging task, and we encourage the open source community to contribute toward training efforts. The most recent set of weights allows stompy (without upper body) to maintain balance in a stable environment. An example trajectory is included below:
 
-#### Running from SLURM Cluster
+### Running from SLURM Cluster
 
 To run from a SLURM cluster (e.g. the K-Scale Andromeda cluster), cd to /mjx_gym/ and run:
 
@@ -91,7 +91,7 @@ sbatch scripts/train.slurm
 
 Training logs, errors, and gpu-utilization will be tracked in the /logs/ directory.
 
-#### Common Issues
+### Common Issues
 
 You might see the following error when running train.py:
 
@@ -118,7 +118,7 @@ conda install cudnn
 
 Another common issue occurs when rendering on a headless server. For now, we recommend rendering locally or using a remote desktop connection to view the rendering.
 
-### MJCF Reference
+## MJCF Reference
 
 To visualize any MJCF file, you can run the following command:
 ```bash

@@ -1,28 +1,50 @@
 import { Callout } from "nextra/components";
 
+# LCD Screens
+
 <Callout type="warning" emoji="⚠️">
   This documentation is under construction and incomplete. We are in the process
   of choosing a microphone that works well with our robots.
 </Callout>
 
-## Large LCD for Face
+## LCD Control Interfaces
+
+### I2C Interface
+
+The Watch LCD communicates with the RP2040 MCU via I2C. The I2C interface uses:
+- SDA (Data line) and SCL (Clock line)
+- Typical communication speed of 400kHz
+- Commands are sent as byte sequences to control display parameters
+
+### HDMI Interface
+
+The Large LCD connects via HDMI to the Jetson:
+- Supports up to 1024x600 @ 60Hz
+- Uses TMDS (Transition Minimized Differential Signaling)
+- Audio is carried over the same cable to the built-in speakers
+
+## Display Hardware
+
+### Large LCD for Face
 
 We are using [this LCD](https://www.seeedstudio.com/7-inch-1024x600-60Hz-IPS-Capacitive-Touch-Screen-with-speakers-p-5842.html) for the face.
 
-## Watch LCD for Eyes
+### Watch LCD for Eyes
 
-At the moment, we are using the this LCD from waveshare: https://www.waveshare.com/product/rp2040-lcd-1.28.htm
+At the moment, we are using this LCD from waveshare: https://www.waveshare.com/product/rp2040-lcd-1.28.htm
 It is an 1.28in circular display connected to a waveshare RP2040 microcontroller. It also has an IMU built in.
 
 We selected it for its compact form factor and having the onboard microcontroller helps simplify the firmware code on the Jetson.
 
 It can be programmed using the Pico SDK in C or with CircuitPython or MicroPython.
 
-
 ### Implementation with C
-For the eye animation, we chose the C library LVGL. Waveshare includes a useful library for initiating and interacting with the LCD
-[/lib/LCD](https://github.com/waveshareteam/RP2040-Touch-LCD-1.28/tree/main/c/lib/LCD) and how to use it.
-An example of how to build an eye emotion animation on top of the library:
+
+For the eye animation, we use the LVGL graphics library. Waveshare provides helper libraries:
+- LCD initialization and control: [/lib/LCD](https://github.com/waveshareteam/RP2040-Touch-LCD-1.28/tree/main/c/lib/LCD)
+- IMU interface: [/lib/QMI8658](https://github.com/waveshareteam/RP2040-Touch-LCD-1.28/tree/main/c/lib/QMI8658)
+
+Example eye animation code:
 
 ```c
 void Grinning_Emotion_Init_Anim(void)
@@ -69,9 +91,6 @@ void Grinning_Emotion_Init_Anim(void)
 }
 ```
 
-
-
-
 For reading the data from the IMU, use the QMI8658 library on the Waveshare demo repo [/lib/QMI8658](https://github.com/waveshareteam/RP2040-Touch-LCD-1.28/tree/main/c/lib/QMI8658).
 See the full sample code at their github repo, a short snippet is included below
 
@@ -90,7 +109,6 @@ float acc[3], gyro[3];
 unsigned int tim_count = 0;
 
 QMI8658_read_xyz(acc, gyro, &tim_count);
-
 ```
 
 ### CircuitPython
@@ -99,7 +117,6 @@ An alternative choice is to flash the RP2040 with CircuitPython and then write P
 You can display an animation with the below functionalities:
 
 ```python
-
 hardware = wsRP2040128()
 hardware.draw_circle('eye', 115, 120, 100, hardware.color('white'))
 hardware.sprites['eye'].x = 80
@@ -125,5 +142,4 @@ while True:
         hardware.time = time.monotonic()
 
     time.sleep(sleep_time)
-
 ```

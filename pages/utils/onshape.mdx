@@ -36,7 +36,7 @@ To reproduce the above example, you can run the following command:
 kol run https://cad.onshape.com/documents/3037473d78845106e95befb1/w/e3a76b21fff5430d0e9ecfb5/e/1d74e2fed25abed64482828a robot
 ```
 
-### Installation
+## Installation
 
 ```bash
 pip install kscale-onshape-library
@@ -46,7 +46,7 @@ pip install 'kscale-onshape-library[all]'  # Install all dependencies
 
 In order to access the OnShape API, you need to define `ONSHAPE_ACCESS_KEY` and `ONSHAPE_SECRET_KEY` using a key generated [here](https://dev-portal.onshape.com/keys).
 
-### Usage
+## Usage
 
 The KOL CLI provides several subcommands for different operations:
 
@@ -60,7 +60,7 @@ Available subcommands:
 - `postprocess`: Post-process an existing URDF
 - `pybullet`: Run PyBullet simulation
 
-#### Download and Post-process
+### Download and Post-process
 
 To download a model from Onshape and apply post-processing:
 
@@ -70,7 +70,7 @@ kol run <onshape-document-url> <output-directory>
 
 To see additional configuration options, consult the config file [here](https://github.com/kscalelabs/onshape/blob/master/kol/onshape/config.py).
 
-#### Download Only
+### Download Only
 
 To only download a model from Onshape without post-processing:
 
@@ -80,7 +80,7 @@ kol download <document-url> <output-directory>
 
 Options are similar to the `run` subcommand.
 
-#### Post-process Existing URDF
+### Post-process Existing URDF
 
 To apply post-processing to an existing URDF file:
 
@@ -88,7 +88,7 @@ To apply post-processing to an existing URDF file:
 kol postprocess <urdf-path>
 ```
 
-#### PyBullet Simulation
+### PyBullet Simulation
 
 To run a PyBullet simulation with the processed URDF:
 
@@ -96,13 +96,13 @@ To run a PyBullet simulation with the processed URDF:
 kol pybullet <urdf-path> [options]
 ```
 
-### Simulation
+## Simulation
 
 The output of the onshape library is simply a robot floating in space. Luckily, most simulators which support URDFs are able to define an environment within code. More changes are needed to make MJCF files simulation ready. The pipeline also generates an MJCF file by default.
 
 Support for other file formats like USD files for IsaacLab will be helpful as well.
 
-### Other Links
+## Other Links
 
 - [OnShape API explorer](https://cad.onshape.com/glassworks/explorer/#/Assembly/getFeatures)
 - [OnShape API documentation](https://onshape-public.github.io/docs/api-intro/)

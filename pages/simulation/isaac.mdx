@@ -1,7 +1,7 @@
 import { Cards } from 'nextra/components'
 import { FaGithub } from 'react-icons/fa'
 
-## Isaac Gym
+# Isaac Gym
 
 A library for simulating Stompy in Isaac Gym.
 
@@ -23,7 +23,7 @@ We currently support Stompy Mini, XBot, Unitree G1 and H1 with more humanoids to
 
 The walking task works reliably with the upper body fixed. The getting up task is still an open challenge!
 
-### Getting Started
+## Getting Started
 
 This repository requires Python 3.8 due to compatibility issues with underlying libraries. We hope to support more recent Python versions in the future.
 
@@ -54,7 +54,7 @@ conda activate kscale-sim-library
 make install-third-party-external
 ```
 
-### Running Stompy experiments
+## Running Stompy experiments
 
 1. Pre-define model directory:
 
@@ -82,7 +82,7 @@ python sim/play.py --task stompymini --sim_device cpu
 
 See [this doc](https://docs.google.com/document/d/1YZzBqIXO7oq7vIKu-BZr5ssNsi3nKtxpRPnfSnTXojA/edit?usp=sharing) for more beginner tips.
 
-### Adding a new robot
+## Adding a new robot
 
 Creating a new embodiment is quite straightforward. The best way is to copy an existing robot and modify it.
 
@@ -106,7 +106,7 @@ and kick off the training:
 python sim/train.py --env-id NEW_HUMANOID --num-envs 4
 ```
 
-### Making it stand
+## Making it stand
 
 1. The best way to start is to make your new robot stand. In this case you want to comment out the rewards that are responsible for making the robot walk. See an example of a [reward config](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/envs/humanoids/stompymini_config.py#L163).
 2. If the robot flies away, inspect your joint limits. During training, we introduce a lot of noise to the default joint positions as well as masses. You might need either adapt the limits or the [noise level](https://github.com/kscalelabs/sim/blob/aa97ddfddcaadcac64d4f83d986548cc7fc451a6/sim/envs/humanoids/stompy_config.py#L213).
@@ -115,7 +115,7 @@ python sim/train.py --env-id NEW_HUMANOID --num-envs 4
 5. Observe the reward for orientation and default joint position. The model should just farm these two rewards.
 6. If the robot still struggles at keeping the standing pose, you can also change the urdf definition using the [script](https://github.com/kscalelabs/sim/blob/master/sim/scripts/create_fixed_torso.py) to fix the upper body or change joint limits.
 
-### Making it walk
+## Making it walk
 
 We set up the logic so that your new robot should start to walk with basic configuration after some modifications.
 
