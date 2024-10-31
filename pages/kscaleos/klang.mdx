@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Callout, Cards } from "nextra/components";
 import { FaGithub } from "react-icons/fa";
 import arch from "./pics/klang-arch.svg";
-import ast from "./pics/klang-ast.svg";
+import klang_interface from "./pics/klang-interface.png";
 
 # Klang
 
@@ -10,7 +10,10 @@ import ast from "./pics/klang-ast.svg";
   This page is currently under construction.
 </Callout>
 
-Klang is a domain-specific language (DSL) for programming robots.
+```bash
+cargo install klang  # To install the Klang toolchain
+pip install pyklang  # To install the Python frontend
+```
 
 <Cards>
   <Cards.Card
@@ -21,16 +24,69 @@ Klang is a domain-specific language (DSL) for programming robots.
   />
 </Cards>
 
-Klang is built into K-Scale OS, and is designed to be a simple and flexible way to get started building robot applications.
+Klang is a domain-specific language (DSL) for programming robots.
+
+<Image alt="Klang Interface" src={klang_interface} style={{ width: "100%", marginTop: "1em" }} />
+
+Klang is built into K-Scale OS, and is designed to be a simple and flexible way to get started building robot applications. Right now, it is basically a glorified templating engine. Klang commands are executed by the neural interpreter described below. Here is a sample Klang program:
+
+```
+> wave [arm] arm {
+    > wave joint [joint] twice {
+        move joint [joint] on the [arm] arm to 90
+        move joint [joint] on the [arm] arm to 0
+    }
+
+    " wave joint [1] twice
+    " wave joint [2] twice
+    " wave joint [3] twice
+}
+
+> wave both arms {
+    " wave [right] arm
+    " wave [left] arm
+}
+
+" wave both arms
+```
+
+This converts to the following tree:
+
+```
+wave both arms {
+  wave right arm {
+    wave joint 1 twice {
+      move joint 1 on the right arm to 90
+      move joint 1 on the right arm to 0
+    }
+    wave joint 2 twice {
+      move joint 2 on the right arm to 90
+      move joint 2 on the right arm to 0
+    }
+    wave joint 3 twice {
+      move joint 3 on the right arm to 90
+      move joint 3 on the right arm to 0
+    }
+  }
+  wave left arm {
+    wave joint 1 twice {
+      move joint 1 on the left arm to 90
+      move joint 1 on the left arm to 0
+    }
+    wave joint 2 twice {
+      move joint 2 on the left arm to 90
+      move joint 2 on the left arm to 0
+    }
+    wave joint 3 twice {
+      move joint 3 on the left arm to 90
+      move joint 3 on the left arm to 0
+    }
+  }
+}
+```
 
 ## Neural Interpreter
 
 Below is a diagram showing the architecture of the Klang neural interpreter.
 
 <Image alt="Klang Neural Interpreter" src={arch} style={{ width: "100%", marginTop: "1em" }} />
-
-## Abstract Syntax Tree
-
-Here is a sample abstract syntax tree (AST) for a Klang program:
-
-<Image alt="Klang AST" src={ast} style={{ width: "100%", marginTop: "1em" }}/>
