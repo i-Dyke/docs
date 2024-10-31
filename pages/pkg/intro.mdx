@@ -1,0 +1,31 @@
+import { Callout } from 'nextra/components'
+
+# K-Scale API
+
+The K-Scale API is a way to programmatically interact with the K-Scale platform. It is available in Python, Rust, and as a CLI.
+
+## Installation
+
+First, you need to get an API key from [here](https://kscale.store/keys), then export it as an environment variable:
+
+```bash
+export KSCALE_API_KEY='your-api-key'
+```
+
+### Python
+
+To install the Python API, use `pip`:
+
+```bash
+pip install kscale
+```
+
+This will also install the `kscale` CLI.
+
+### Rust
+
+To install just the Rust component of the API, use `cargo`:
+
+```bash
+cargo add kscale
+```

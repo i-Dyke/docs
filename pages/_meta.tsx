@@ -4,7 +4,7 @@ export default {
     type: "separator",
     title: "Software",
   },
-  api: "API",
+  pkg: "API",
   os: "Operating System",
   actuators: "Actuators",
   models: "Models",
@@ -15,6 +15,7 @@ export default {
     type: "separator",
     title: "Hardware",
   },
+  hw: "Getting Started",
   build_guide: "Build Guide",
   components: "Components",
   "-- Community": {

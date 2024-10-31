@@ -1,6 +1,6 @@
 export default {
   intro: "Introduction",
-  cli: "Command Line",
+  cli: "Command Line Interface",
   python: "Python",
   rust: "Rust",
 };

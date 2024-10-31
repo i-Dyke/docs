@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: "https://discord.gg/kscale",
   },
-  docsRepositoryBase: "https://github.com/kscalelabs/docs/tree/master/",
+  docsRepositoryBase: "https://github.com/kscalelabs/docs/tree/master",
   editLink: {
     content: "Edit this page on GitHub",
   },
